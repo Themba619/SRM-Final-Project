@@ -92,7 +92,7 @@ export function Layout({ children, userRole, onRoleChange }: LayoutProps) {
                 size="sm"
                 onClick={() => {
                   localStorage.removeItem("isLoggedIn");
-                  window.location.href = "/login";
+                  window.location.href = "/SRM-Final-Project/#/login";
                 }}
               >
                 <LogOut className="w-4 h-4" />
