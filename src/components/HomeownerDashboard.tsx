@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -76,7 +75,7 @@ export function HomeownerDashboard() {
             <CardTitle className="text-sm font-medium opacity-90">Monthly Savings</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$23.50</div>
+            <div className="text-2xl font-bold">R230.50</div>
             <p className="text-xs opacity-75 mt-1">Compared to avg</p>
           </CardContent>
         </Card>
@@ -116,6 +115,24 @@ export function HomeownerDashboard() {
                   onClick={() => setViewMode('monthly')}
                 >
                   Monthly
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="ml-2"
+                  onClick={() => {
+                    // Fake CSV download for demo
+                    const csv = 'Time,Usage (L)\n' + dailyUsageData.map(row => `${row.time},${row.usage}`).join('\n');
+                    const blob = new Blob([csv], { type: 'text/csv' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'water-usage-report.csv';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                  }}
+                >
+                  Download Report
                 </Button>
               </div>
             </div>
@@ -223,7 +240,7 @@ export function HomeownerDashboard() {
             </div>
             <div className="p-4 bg-white rounded-lg">
               <h4 className="font-medium text-purple-800">Efficiency Goal</h4>
-              <p className="text-sm text-gray-600 mt-1">Reduce 50L daily to reach the efficient goal and save $8/month.</p>
+              <p className="text-sm text-gray-600 mt-1">Reduce 50L daily to reach the efficient goal and save R340/month.</p>
             </div>
           </div>
         </CardContent>

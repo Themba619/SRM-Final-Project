@@ -1,24 +1,37 @@
-
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Home, BarChart3, Settings, LogOut } from 'lucide-react';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Home, BarChart3, Settings, LogOut } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
-  userRole: 'homeowner' | 'admin' | 'government';
-  onRoleChange: (role: 'homeowner' | 'admin' | 'government') => void;
+  userRole: "homeowner" | "admin" | "government";
+  onRoleChange: (role: "homeowner" | "admin" | "government") => void;
 }
 
 export function Layout({ children, userRole, onRoleChange }: LayoutProps) {
   const [currentUser] = useState({
-    name: userRole === 'homeowner' ? 'John Smith' : userRole === 'admin' ? 'Admin User' : 'Gov Official',
-    email: userRole === 'homeowner' ? 'john@email.com' : userRole === 'admin' ? 'admin@wumd.gov' : 'official@gov.sg',
-    avatar: ''
+    name:
+      userRole === "homeowner"
+        ? "Fake user"
+        : userRole === "admin"
+        ? "Admin User"
+        : "Gov Official",
+    email:
+      userRole === "homeowner"
+        ? "FakeUser@gmail.com"
+        : userRole === "admin"
+        ? "admin@wumd.gov"
+        : "official@gov.sg",
+    avatar: "",
   });
 
   const getUserInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -34,27 +47,27 @@ export function Layout({ children, userRole, onRoleChange }: LayoutProps) {
                 </div>
                 <span className="text-xl font-bold text-gray-900">WUMD</span>
               </div>
-              
+
               {/* Role Switcher for Demo */}
               <div className="flex gap-2 ml-8">
                 <Button
-                  variant={userRole === 'homeowner' ? 'default' : 'outline'}
+                  variant={userRole === "homeowner" ? "default" : "outline"}
                   size="sm"
-                  onClick={() => onRoleChange('homeowner')}
+                  onClick={() => onRoleChange("homeowner")}
                 >
                   Homeowner
                 </Button>
                 <Button
-                  variant={userRole === 'admin' ? 'default' : 'outline'}
+                  variant={userRole === "admin" ? "default" : "outline"}
                   size="sm"
-                  onClick={() => onRoleChange('admin')}
+                  onClick={() => onRoleChange("admin")}
                 >
                   Admin
                 </Button>
                 <Button
-                  variant={userRole === 'government' ? 'default' : 'outline'}
+                  variant={userRole === "government" ? "default" : "outline"}
                   size="sm"
-                  onClick={() => onRoleChange('government')}
+                  onClick={() => onRoleChange("government")}
                 >
                   Government
                 </Button>
@@ -69,10 +82,19 @@ export function Layout({ children, userRole, onRoleChange }: LayoutProps) {
                 </AvatarFallback>
               </Avatar>
               <div className="hidden md:block">
-                <div className="text-sm font-medium text-gray-900">{currentUser.name}</div>
+                <div className="text-sm font-medium text-gray-900">
+                  {currentUser.name}
+                </div>
                 <div className="text-xs text-gray-500">{currentUser.email}</div>
               </div>
-              <Button variant="ghost" size="sm">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  localStorage.removeItem("isLoggedIn");
+                  window.location.href = "/login";
+                }}
+              >
                 <LogOut className="w-4 h-4" />
               </Button>
             </div>
