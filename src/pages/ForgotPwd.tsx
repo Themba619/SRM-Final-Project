@@ -24,15 +24,13 @@ const ForgotPwd = () => {
         {/* Left illustration */}
         <div className="flex-1 flex items-center justify-center bg-[#f5f8fc] p-0 m-0 h-full">
           <img
-            src="/forgotPwd.png"
+            src={
+              process.env.NODE_ENV === "production"
+                ? "/SRM-Final-Project/forgotPwd.png"
+                : "/forgotPwd.png"
+            }
             alt="Forgot password illustration"
-            className="h-full w-full object-cover rounded-l-[40px]"
-            style={{
-              maxWidth: "100%",
-              maxHeight: "100%",
-              borderTopLeftRadius: 40,
-              borderBottomLeftRadius: 40,
-            }}
+            className="w-full h-auto object-contain"
           />
         </div>
         {/* Right form */}
