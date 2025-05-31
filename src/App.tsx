@@ -43,10 +43,10 @@ const App = () => {
                     setUserRole(role);
                     window.location.href =
                       role === "homeowner"
-                        ? "/dashboard"
+                        ? "/SRM-Final-Project/#/dashboard"
                         : role === "admin"
-                        ? "/admin"
-                        : "/government";
+                        ? "/SRM-Final-Project/#/admin"
+                        : "/SRM-Final-Project/#/government";
                   }}
                 >
                   {userRole === "homeowner" && <HomeownerDashboard />}
@@ -64,10 +64,10 @@ const App = () => {
                     setUserRole(role);
                     window.location.href =
                       role === "homeowner"
-                        ? "/dashboard"
+                        ? "/SRM-Final-Project/#/dashboard"
                         : role === "admin"
-                        ? "/admin"
-                        : "/government";
+                        ? "/SRM-Final-Project/#/admin"
+                        : "/SRM-Final-Project/#/government";
                   }}
                 >
                   <AdminDashboard />
@@ -83,10 +83,10 @@ const App = () => {
                     setUserRole(role);
                     window.location.href =
                       role === "homeowner"
-                        ? "/dashboard"
+                        ? "/SRM-Final-Project/#/dashboard"
                         : role === "admin"
-                        ? "/admin"
-                        : "/government";
+                        ? "/SRM-Final-Project/#/admin"
+                        : "/SRM-Final-Project/#/government";
                   }}
                 >
                   <GovernmentDashboard />
