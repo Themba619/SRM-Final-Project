@@ -103,7 +103,6 @@ const Onboarding = () => {
           <CardContent className="p-8">
             <OnboardingStep {...steps[currentStep]} />
             
-            {/* Progress Indicators */}
             <div className="flex justify-center space-x-2 mt-8">
               {steps.map((_, index) => (
                 <div
@@ -117,7 +116,6 @@ const Onboarding = () => {
               ))}
             </div>
 
-            {/* Navigation */}
             <div className="flex justify-between items-center mt-8">
               <Button
                 variant="ghost"
@@ -138,7 +136,6 @@ const Onboarding = () => {
               </Button>
             </div>
 
-            {/* Skip option */}
             <div className="text-center mt-4">
               <Button
                 variant="ghost"
