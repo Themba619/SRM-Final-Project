@@ -1,18 +1,17 @@
-
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Droplets, Eye, EyeOff, Mail, Lock } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Checkbox } from '@/components/ui/checkbox';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Droplets, Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
+    email: "",
+    password: "",
+    rememberMe: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,20 +20,20 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate login process
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     // For demo purposes, redirect to dashboard
-    navigate('/');
+    navigate("/dashboard");
     setIsLoading(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -47,7 +46,9 @@ const Login = () => {
               <Droplets className="w-8 h-8 text-white" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-bold text-white">Welcome Back</CardTitle>
+              <CardTitle className="text-2xl font-bold text-white">
+                Welcome Back
+              </CardTitle>
               <p className="text-white/70 mt-2">Sign in to your WUMD account</p>
             </div>
           </CardHeader>
@@ -55,7 +56,9 @@ const Login = () => {
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-white/90">Email</Label>
+                <Label htmlFor="email" className="text-white/90">
+                  Email
+                </Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
@@ -72,7 +75,9 @@ const Login = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-white/90">Password</Label>
+                <Label htmlFor="password" className="text-white/90">
+                  Password
+                </Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
@@ -106,8 +111,11 @@ const Login = () => {
                   <Checkbox
                     id="rememberMe"
                     checked={formData.rememberMe}
-                    onCheckedChange={(checked) => 
-                      setFormData(prev => ({ ...prev, rememberMe: checked as boolean }))
+                    onCheckedChange={(checked) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        rememberMe: checked as boolean,
+                      }))
                     }
                     className="border-white/30 data-[state=checked]:bg-white data-[state=checked]:text-gray-900"
                   />
@@ -115,8 +123,8 @@ const Login = () => {
                     Remember me
                   </Label>
                 </div>
-                <Link 
-                  to="/forgot-password" 
+                <Link
+                  to="/forgot-password"
                   className="text-sm text-white/70 hover:text-white transition-colors"
                 >
                   Forgot password?
@@ -128,7 +136,7 @@ const Login = () => {
                 className="w-full bg-white text-gray-900 hover:bg-white/90 font-medium"
                 disabled={isLoading}
               >
-                {isLoading ? 'Signing in...' : 'Sign In'}
+                {isLoading ? "Signing in..." : "Sign In"}
               </Button>
             </form>
 
@@ -138,22 +146,33 @@ const Login = () => {
                   <div className="w-full border-t border-white/20"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-transparent text-white/70">Or continue with</span>
+                  <span className="px-2 bg-transparent text-white/70">
+                    Or continue with
+                  </span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                <Button
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                >
                   Google
                 </Button>
-                <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                <Button
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                >
                   Microsoft
                 </Button>
               </div>
 
               <p className="text-white/70 text-sm">
-                Don't have an account?{' '}
-                <Link to="/signup" className="text-white hover:underline font-medium">
+                Don't have an account?{" "}
+                <Link
+                  to="/signup"
+                  className="text-white hover:underline font-medium"
+                >
                   Sign up
                 </Link>
               </p>

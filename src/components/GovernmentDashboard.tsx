@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -29,8 +28,11 @@ const conservationPrograms = [
 ];
 
 export function GovernmentDashboard() {
-  const totalHouseholds = cityUsageData.reduce((sum, district) => sum + district.households, 0);
-  const totalUsage = cityUsageData.reduce((sum, district) => sum + district.usage, 0);
+  // Use regionalData for metrics
+  const totalHouseholds = regionalData.reduce((sum, region) => sum + region.population, 0);
+  // Estimate total usage as sum of (population * avgUsage)
+  const totalUsage = regionalData.reduce((sum, region) => sum + (region.population * region.avgUsage), 0);
+  // Average usage per household
   const averageUsage = Math.round(totalUsage / totalHouseholds);
 
   return (
@@ -90,7 +92,7 @@ export function GovernmentDashboard() {
             <CardTitle className="text-sm font-medium opacity-90">Budget Savings</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$2.1M</div>
+            <div className="text-2xl font-bold">R2.1M</div>
             <p className="text-xs opacity-75 mt-1">Infrastructure costs saved</p>
           </CardContent>
         </Card>
@@ -112,7 +114,9 @@ export function GovernmentDashboard() {
               <Tooltip 
                 formatter={(value, name) => {
                   if (name === 'conservation') return [`${value}%`, 'Conservation Rate'];
-                  return [`${(value / 1000000).toFixed(1)}M L`, name === 'consumption' ? 'Actual Usage' : 'Target'];
+                  // Ensure value is a number for arithmetic
+                  const numValue = typeof value === 'number' ? value : Number(value);
+                  return [`${(numValue / 1000000).toFixed(1)}M L`, name === 'consumption' ? 'Actual Usage' : 'Target'];
                 }}
               />
               <Bar yAxisId="left" dataKey="consumption" fill="#0ea5e9" name="consumption" />
