@@ -25,7 +25,7 @@ const Login = () => {
     // Simulate login process
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Redirect to dashboard
+    // For demo purposes, redirect to dashboard
     navigate('/');
     setIsLoading(false);
   };
@@ -39,54 +39,50 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Fluid art overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-pink-500/80 to-orange-400/80"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="3"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-      
-      <div className="w-full max-w-md relative z-10">
-        <Card className="bg-black/40 backdrop-blur-xl border-white/20 shadow-2xl">
-          <CardHeader className="text-center space-y-6 pb-8">
-            <div className="mx-auto w-20 h-20 bg-black/60 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20">
-              <Droplets className="w-10 h-10 text-white" />
+    <div className="min-h-screen bg-fluid-gradient flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <Card className="bg-white/10 backdrop-blur-md border-white/20 shadow-2xl">
+          <CardHeader className="text-center space-y-4">
+            <div className="mx-auto w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <Droplets className="w-8 h-8 text-white" />
             </div>
             <div>
-              <CardTitle className="text-3xl font-bold text-white tracking-tight">Log In</CardTitle>
-              <p className="text-white/80 mt-3 text-base">Welcome back to WUMD</p>
+              <CardTitle className="text-2xl font-bold text-white">Welcome Back</CardTitle>
+              <p className="text-white/70 mt-2">Sign in to your WUMD account</p>
             </div>
           </CardHeader>
 
           <CardContent className="space-y-6">
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-white/90 text-sm font-medium">Email</Label>
+                <Label htmlFor="email" className="text-white/90">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="youremail@gmail.com"
+                    placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="pl-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-11"
+                    className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-white/90 text-sm font-medium">Password</Label>
+                <Label htmlFor="password" className="text-white/90">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="••••••••"
+                    placeholder="Enter your password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="pl-10 pr-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-11"
+                    className="pl-10 pr-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                     required
                   />
                   <Button
@@ -113,15 +109,15 @@ const Login = () => {
                     onCheckedChange={(checked) => 
                       setFormData(prev => ({ ...prev, rememberMe: checked as boolean }))
                     }
-                    className="border-white/40 data-[state=checked]:bg-white data-[state=checked]:text-black"
+                    className="border-white/30 data-[state=checked]:bg-white data-[state=checked]:text-gray-900"
                   />
-                  <Label htmlFor="rememberMe" className="text-sm text-white/80">
+                  <Label htmlFor="rememberMe" className="text-sm text-white/70">
                     Remember me
                   </Label>
                 </div>
                 <Link 
                   to="/forgot-password" 
-                  className="text-sm text-white/80 hover:text-white transition-colors"
+                  className="text-sm text-white/70 hover:text-white transition-colors"
                 >
                   Forgot password?
                 </Link>
@@ -129,10 +125,10 @@ const Login = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-white text-black hover:bg-white/90 font-medium h-11 text-base"
+                className="w-full bg-white text-gray-900 hover:bg-white/90 font-medium"
                 disabled={isLoading}
               >
-                {isLoading ? 'Signing in...' : 'Log In'}
+                {isLoading ? 'Signing in...' : 'Sign In'}
               </Button>
             </form>
 
@@ -147,15 +143,15 @@ const Login = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" className="bg-black/20 border-white/30 text-white hover:bg-black/30">
+                <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                   Google
                 </Button>
-                <Button variant="outline" className="bg-black/20 border-white/30 text-white hover:bg-black/30">
+                <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                   Microsoft
                 </Button>
               </div>
 
-              <p className="text-white/80 text-sm">
+              <p className="text-white/70 text-sm">
                 Don't have an account?{' '}
                 <Link to="/signup" className="text-white hover:underline font-medium">
                   Sign up

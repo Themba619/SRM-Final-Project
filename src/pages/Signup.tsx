@@ -43,7 +43,7 @@ const Signup = () => {
     // Simulate signup process
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Redirect to onboarding
+    // For demo purposes, redirect to onboarding
     navigate('/onboarding');
     setIsLoading(false);
   };
@@ -57,28 +57,24 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Fluid art overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-pink-500/80 to-orange-400/80"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="3"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-      
-      <div className="w-full max-w-md relative z-10">
-        <Card className="bg-black/40 backdrop-blur-xl border-white/20 shadow-2xl">
-          <CardHeader className="text-center space-y-6 pb-6">
-            <div className="mx-auto w-20 h-20 bg-black/60 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20">
-              <Droplets className="w-10 h-10 text-white" />
+    <div className="min-h-screen bg-fluid-gradient flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <Card className="bg-white/10 backdrop-blur-md border-white/20 shadow-2xl">
+          <CardHeader className="text-center space-y-4">
+            <div className="mx-auto w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <Droplets className="w-8 h-8 text-white" />
             </div>
             <div>
-              <CardTitle className="text-3xl font-bold text-white tracking-tight">Get Started.</CardTitle>
-              <p className="text-white/80 mt-3 text-base">Create your WUMD account</p>
+              <CardTitle className="text-2xl font-bold text-white">Create Account</CardTitle>
+              <p className="text-white/70 mt-2">Join WUMD and start monitoring your water usage</p>
             </div>
           </CardHeader>
 
-          <CardContent className="space-y-5">
+          <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-white/90 text-sm">First Name</Label>
+                  <Label htmlFor="firstName" className="text-white/90">First Name</Label>
                   <div className="relative">
                     <User className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                     <Input
@@ -87,27 +83,27 @@ const Signup = () => {
                       placeholder="John"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="pl-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-10"
+                      className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                       required
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-white/90 text-sm">Last Name</Label>
+                  <Label htmlFor="lastName" className="text-white/90">Last Name</Label>
                   <Input
                     id="lastName"
                     name="lastName"
                     placeholder="Doe"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-10"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-white/90 text-sm">Email</Label>
+                <Label htmlFor="email" className="text-white/90">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
@@ -117,16 +113,16 @@ const Signup = () => {
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="pl-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-10"
+                    className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="userType" className="text-white/90 text-sm">User Type</Label>
+                <Label htmlFor="userType" className="text-white/90">User Type</Label>
                 <Select value={formData.userType} onValueChange={(value) => setFormData(prev => ({ ...prev, userType: value }))}>
-                  <SelectTrigger className="bg-black/20 border-white/30 text-white h-10">
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white">
                     <SelectValue placeholder="Select user type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -140,16 +136,16 @@ const Signup = () => {
 
               {(formData.userType === 'business' || formData.userType === 'admin' || formData.userType === 'government') && (
                 <div className="space-y-2">
-                  <Label htmlFor="organization" className="text-white/90 text-sm">Organization</Label>
+                  <Label htmlFor="organization" className="text-white/90">Organization</Label>
                   <div className="relative">
                     <Building className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                     <Input
                       id="organization"
                       name="organization"
-                      placeholder="Your organization"
+                      placeholder="Your organization name"
                       value={formData.organization}
                       onChange={handleInputChange}
-                      className="pl-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-10"
+                      className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                       required
                     />
                   </div>
@@ -157,17 +153,17 @@ const Signup = () => {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-white/90 text-sm">Password</Label>
+                <Label htmlFor="password" className="text-white/90">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="••••••••"
+                    placeholder="Create a password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="pl-10 pr-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-10"
+                    className="pl-10 pr-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                     required
                   />
                   <Button
@@ -187,17 +183,17 @@ const Signup = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-white/90 text-sm">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-white/90">Confirm Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
-                    placeholder="••••••••"
+                    placeholder="Confirm your password"
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
-                    className="pl-10 pr-10 bg-black/20 border-white/30 text-white placeholder:text-white/50 focus:border-white/60 h-10"
+                    className="pl-10 pr-10 bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                     required
                   />
                   <Button
@@ -216,16 +212,16 @@ const Signup = () => {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-2 pt-2">
+              <div className="flex items-center space-x-2">
                 <Checkbox
                   id="agreeToTerms"
                   checked={formData.agreeToTerms}
                   onCheckedChange={(checked) => 
                     setFormData(prev => ({ ...prev, agreeToTerms: checked as boolean }))
                   }
-                  className="border-white/40 data-[state=checked]:bg-white data-[state=checked]:text-black mt-0.5"
+                  className="border-white/30 data-[state=checked]:bg-white data-[state=checked]:text-gray-900"
                 />
-                <Label htmlFor="agreeToTerms" className="text-xs text-white/80 leading-relaxed">
+                <Label htmlFor="agreeToTerms" className="text-sm text-white/70">
                   I agree to the{' '}
                   <Link to="/terms" className="text-white hover:underline">
                     Terms of Service
@@ -239,15 +235,15 @@ const Signup = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-white text-black hover:bg-white/90 font-medium h-11 text-base"
+                className="w-full bg-white text-gray-900 hover:bg-white/90 font-medium"
                 disabled={isLoading}
               >
                 {isLoading ? 'Creating Account...' : 'Create Account'}
               </Button>
             </form>
 
-            <div className="text-center pt-2">
-              <p className="text-white/80 text-sm">
+            <div className="text-center">
+              <p className="text-white/70 text-sm">
                 Already have an account?{' '}
                 <Link to="/login" className="text-white hover:underline font-medium">
                   Sign in
