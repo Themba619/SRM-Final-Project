@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/flow-savvy-water-view/', // Set base to repo name for GitHub Pages
+  base: '/SRM-Final-Project/', // Set base to new repo name for GitHub Pages
   server: {
     host: "::",
     port: 8080,
