@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Droplets, Mail, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Droplets, Mail, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate password reset process
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     setIsSubmitted(true);
     setIsLoading(false);
   };
@@ -32,23 +32,29 @@ const ForgotPassword = () => {
                 <Droplets className="w-8 h-8 text-white" />
               </div>
               <div>
-                <CardTitle className="text-2xl font-bold text-white">Check Your Email</CardTitle>
-                <p className="text-white/70 mt-2">We've sent password reset instructions to your email address</p>
+                <CardTitle className="text-2xl font-bold text-white">
+                  Check Your Email
+                </CardTitle>
+                <p className="text-white/70 mt-2">
+                  We've sent password reset instructions to your email address
+                </p>
               </div>
             </CardHeader>
 
             <CardContent className="space-y-6">
               <div className="text-center space-y-4">
                 <p className="text-white/80">
-                  If an account with email <span className="font-medium text-white">{email}</span> exists, 
-                  you will receive password reset instructions shortly.
+                  If an account with email{" "}
+                  <span className="font-medium text-white">{email}</span>{" "}
+                  exists, you will receive password reset instructions shortly.
                 </p>
-                
+
                 <div className="space-y-3">
                   <p className="text-white/70 text-sm">
-                    Didn't receive an email? Check your spam folder or try again.
+                    Didn't receive an email? Check your spam folder or try
+                    again.
                   </p>
-                  
+
                   <Button
                     onClick={() => setIsSubmitted(false)}
                     variant="outline"
@@ -58,8 +64,8 @@ const ForgotPassword = () => {
                   </Button>
                 </div>
 
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -82,15 +88,21 @@ const ForgotPassword = () => {
               <Droplets className="w-8 h-8 text-white" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-bold text-white">Reset Password</CardTitle>
-              <p className="text-white/70 mt-2">Enter your email to receive reset instructions</p>
+              <CardTitle className="text-2xl font-bold text-white">
+                Reset Password
+              </CardTitle>
+              <p className="text-white/70 mt-2">
+                Enter your email to receive reset instructions
+              </p>
             </div>
           </CardHeader>
 
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-white/90">Email Address</Label>
+                <Label htmlFor="email" className="text-white/90">
+                  Email Address
+                </Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-white/50" />
                   <Input
@@ -111,7 +123,7 @@ const ForgotPassword = () => {
                 className="w-full bg-white text-gray-900 hover:bg-white/90 font-medium"
                 disabled={isLoading}
               >
-                {isLoading ? 'Sending...' : 'Send Reset Instructions'}
+                {isLoading ? "Sending..." : "Send Reset Instructions"}
               </Button>
             </form>
 
@@ -126,17 +138,20 @@ const ForgotPassword = () => {
               </div>
 
               <div className="space-y-2">
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back to Login
                 </Link>
-                
+
                 <p className="text-white/70 text-sm">
-                  Don't have an account?{' '}
-                  <Link to="/signup" className="text-white hover:underline font-medium">
+                  Don't have an account?{" "}
+                  <Link
+                    to="/signup"
+                    className="text-white hover:underline font-medium"
+                  >
                     Sign up
                   </Link>
                 </p>
